@@ -1,8 +1,13 @@
 import streamlit as st
 import pandas as pd
 
+
+st.markdown("Chargez le fichier Excel avec les données scriptées.")
+
+uploaded_file = st.file_uploader("📂 Charger le fichier Excel", type=["xlsx", "xls"])
 # Charger les données (déjà générées avec ton script)
-df_resultats = pd.read_excel("resultats_cp.xlsx")
+
+df_resultats = pd.read_excel(uploaded_file)
 
 # Résumé par salarié
 df_resume = df_resultats.groupby("Nom", as_index=False)[["CP N-1", "CP N"]].sum()
